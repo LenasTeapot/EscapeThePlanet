@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvkxxxxf5ejt3"]
+
+[ext_resource type="Texture2D" uid="uid://2yt0lfdhra1j" path="res://UI/glassPanel_cornerTL.png" id="1_1xvet"]
+[ext_resource type="Script" path="res://start_menu.gd" id="1_4mes8"]
+
+[node name="start_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4mes8")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = -125.0
+offset_right = 175.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_1xvet")
+patch_margin_left = 24
+patch_margin_top = 24
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect"]
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -60.0
+offset_right = 100.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="New" type="Button" parent="NinePatchRect/VBoxContainer"]
+layout_mode = 2
+text = "Start New Game
+"
+
+[node name="Load" type="Button" parent="NinePatchRect/VBoxContainer"]
+layout_mode = 2
+text = "Load Game"
+
+[node name="Quit" type="Button" parent="NinePatchRect/VBoxContainer"]
+layout_mode = 2
+text = "Quit to Desktop"

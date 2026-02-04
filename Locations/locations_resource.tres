@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://b8au3lgso7pm0"]
+
+[ext_resource type="PackedScene" uid="uid://dy5p3iukvkf0g" path="res://Locations/Location_1.tscn" id="1_c2d2o"]
+[ext_resource type="PackedScene" uid="uid://c5foo3msjegu5" path="res://Locations/Location_2.tscn" id="2_v7hj6"]
+[ext_resource type="PackedScene" uid="uid://dfrnjjwswd6u5" path="res://Locations/StartLocation.tscn" id="3_y50r6"]
+
+[sub_resource type="GDScript" id="GDScript_btg0f"]
+script/source = "extends Resource
+
+@export var locations: Array[PackedScene]
+@export var start_location: PackedScene
+"
+
+[resource]
+script = SubResource("GDScript_btg0f")
+locations = Array[PackedScene]([ExtResource("1_c2d2o"), ExtResource("2_v7hj6")])
+start_location = ExtResource("3_y50r6")

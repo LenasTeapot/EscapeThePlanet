@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://blt2h4n5322y5"]
+
+[ext_resource type="Script" path="res://WorldSpawner.gd" id="1_7fpu4"]
+[ext_resource type="Resource" uid="uid://b8au3lgso7pm0" path="res://Locations/locations_resource.tres" id="2_dp7x4"]
+
+[node name="WorldSpawner" type="Node2D"]
+position = Vector2(58, 501)
+script = ExtResource("1_7fpu4")
+paddingMinMax = Vector2(100, 200)
+locationsResource = ExtResource("2_dp7x4")

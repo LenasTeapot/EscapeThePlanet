@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://clp0ehwu8j2c8"]
+
+[ext_resource type="Script" uid="uid://cc5t1xd6gpocj" path="res://Sun.gd" id="1_y5cgr"]
+[ext_resource type="Texture2D" uid="uid://kvccyl8mhi7m" path="res://UI/dotYellow.png" id="2_txqhw"]
+
+[node name="Sun" type="Node2D"]
+script = ExtResource("1_y5cgr")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("2_txqhw")

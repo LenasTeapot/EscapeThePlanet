@@ -1,0 +1,173 @@
+[gd_scene load_steps=18 format=3 uid="uid://c5hoiv7myxo4g"]
+
+[ext_resource type="Script" uid="uid://ew3x43f41fkg" path="res://main.gd" id="1_kcon1"]
+[ext_resource type="PackedScene" uid="uid://c2a3vt8sndb5d" path="res://Character/PlayerCharacter.tscn" id="2_sja83"]
+[ext_resource type="Texture2D" uid="uid://b6fsfrtoxgxix" path="res://KennySpaceEx/PNG/Backgrounds/blue_land.png" id="3_gr30s"]
+[ext_resource type="Texture2D" uid="uid://cgj1h027r65sv" path="res://KennySpaceEx/PNG/Ground/Planet/planetMid.png" id="4_0b04w"]
+[ext_resource type="Script" uid="uid://cwx8pesmvd71s" path="res://FollowCamera.gd" id="5_1cmih"]
+[ext_resource type="Texture2D" uid="uid://kvccyl8mhi7m" path="res://UI/dotYellow.png" id="6_wlfpa"]
+[ext_resource type="Texture2D" uid="uid://b13omne4pple3" path="res://UI/dotBlue.png" id="7_lxawf"]
+[ext_resource type="PackedScene" uid="uid://clp0ehwu8j2c8" path="res://Sun.tscn" id="7_pklq5"]
+[ext_resource type="PackedScene" uid="uid://blt2h4n5322y5" path="res://world_spawner.tscn" id="9_46ioo"]
+[ext_resource type="PackedScene" uid="uid://bvy48a6wgnbna" path="res://HUD.tscn" id="10_4254q"]
+[ext_resource type="AudioStream" uid="uid://bhpbprg8g2n18" path="res://Audio/TownTheme.mp3" id="11_hudh1"]
+[ext_resource type="Script" uid="uid://be1n74w2fkupv" path="res://Tint.gd" id="12_aonjr"]
+
+[sub_resource type="Curve2D" id="Curve2D_oeaww"]
+_data = {
+"points": PackedVector2Array(-2.9966137, 318.7528, 0, -400, 350, 200, 0, -400, 0, 0, -350, 200)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_aonjr"]
+bake_interval = 10.0
+_data = {
+"points": PackedVector2Array(0, 0, -50, -200, 250, 0, 50, -200, 0, 0, -250, 0)
+}
+point_count = 2
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7laqb"]
+friction = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m5ug1"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_do8ha"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_kcon1")
+
+[node name="PlayerCharacter" parent="." groups=["Player"] instance=ExtResource("2_sja83")]
+position = Vector2(567, 535)
+
+[node name="Camera2D" type="Camera2D" parent="PlayerCharacter"]
+position = Vector2(0, -213)
+
+[node name="HUD" parent="PlayerCharacter/Camera2D" instance=ExtResource("10_4254q")]
+z_index = 3
+offset_left = -567.0
+offset_top = -322.0
+offset_right = -567.0
+offset_bottom = -322.0
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.05, 0.05)
+motion_mirroring = Vector2(1228, 0)
+
+[node name="BlueLand" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+z_index = -1
+position = Vector2(567, 224)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("3_gr30s")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1250, 0)
+
+[node name="PlanetMid" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(0, 600)
+texture = ExtResource("4_0b04w")
+
+[node name="PlanetMid2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(125, 600)
+texture = ExtResource("4_0b04w")
+
+[node name="PlanetMid3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(250, 600)
+texture = ExtResource("4_0b04w")
+
+[node name="PlanetMid4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(375, 600)
+texture = ExtResource("4_0b04w")
+
+[node name="PlanetMid5" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(503, 600)
+texture = ExtResource("4_0b04w")
+
+[node name="PlanetMid6" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(628, 600)
+texture = ExtResource("4_0b04w")
+
+[node name="PlanetMid7" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(753, 600)
+texture = ExtResource("4_0b04w")
+
+[node name="PlanetMid8" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(878, 600)
+texture = ExtResource("4_0b04w")
+
+[node name="PlanetMid9" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(1006, 600)
+texture = ExtResource("4_0b04w")
+
+[node name="PlanetMid10" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(1131, 600)
+texture = ExtResource("4_0b04w")
+
+[node name="FollowCameraX" type="Node2D" parent="."]
+position = Vector2(607, 178)
+script = ExtResource("5_1cmih")
+useY = true
+
+[node name="Path2D2" type="Path2D" parent="FollowCameraX"]
+position = Vector2(85, -35)
+curve = SubResource("Curve2D_oeaww")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="FollowCameraX/Path2D2"]
+position = Vector2(350, 200)
+rotation = -1.5707964
+
+[node name="YellowSun" parent="FollowCameraX/Path2D2/PathFollow2D" instance=ExtResource("7_pklq5")]
+texture = ExtResource("6_wlfpa")
+
+[node name="Path2D3" type="Path2D" parent="FollowCameraX"]
+position = Vector2(-207, 69)
+curve = SubResource("Curve2D_aonjr")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="FollowCameraX/Path2D3"]
+position = Vector2(250, 0)
+rotation = -1.815775
+
+[node name="BlueSun" parent="FollowCameraX/Path2D3/PathFollow2D" instance=ExtResource("7_pklq5")]
+rotation = 1.5707964
+time = 10
+texture = ExtResource("7_lxawf")
+
+[node name="WorldSpawner" parent="." instance=ExtResource("9_46ioo")]
+position = Vector2(567, 536)
+numSpawnLocations = 8
+paddingMinMax = Vector2(200, 400)
+
+[node name="GroundStaticBodyFollow" type="StaticBody2D" parent="."]
+position = Vector2(564, 600)
+scale = Vector2(70, 5)
+physics_material_override = SubResource("PhysicsMaterial_7laqb")
+script = ExtResource("5_1cmih")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundStaticBodyFollow"]
+shape = SubResource("RectangleShape2D_m5ug1")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_hudh1")
+volume_db = 1.0
+autoplay = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+modulate = Color(0.47657922, 0.27395758, 0.5468543, 0.497)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.5
+offset_top = -0.5
+offset_right = -0.5
+offset_bottom = -0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_do8ha")
+script = ExtResource("12_aonjr")
+BLUE_TINT = Color(0.66743076, 0.8901186, 1, 0.29000002)
+YELLOW_TINT = Color(0.81178766, 0.88134474, 0.40018785, 0.29000002)
+WHITE_TINT = Color(1, 1, 1, 0.29000002)
+NIGHT_TINT = Color(0.47657922, 0.27395758, 0.5468543, 0.497)
