@@ -20,10 +20,10 @@ offset_bottom = 100.0
 
 [node name="TempLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.8509804, 0.42352942, 0.54509807, 1)
 text = "Temperature: "
 
 [node name="OxyLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.8509804, 0.42352942, 0.54509807, 1)
 text = "Oxygen: "

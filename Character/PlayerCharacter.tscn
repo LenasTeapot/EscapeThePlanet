@@ -31,7 +31,6 @@ animations = [{
 
 [node name="PlayerCharacter" type="CharacterBody2D"]
 script = ExtResource("1_imxum")
-crouch_texture = ExtResource("2_loigd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -86)
@@ -41,6 +40,6 @@ shape = SubResource("CapsuleShape2D_e1me7")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 z_index = 1
-position = Vector2(0, -85)
+position = Vector2(0, -86)
 sprite_frames = SubResource("SpriteFrames_fx146")
-animation = &"crouch"
+animation = &"walk"

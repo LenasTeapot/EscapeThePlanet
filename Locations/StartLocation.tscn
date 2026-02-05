@@ -1,9 +1,5 @@
-[gd_scene load_steps=3 format=3 uid="uid://dfrnjjwswd6u5"]
+[gd_scene load_steps=2 format=3 uid="uid://dfrnjjwswd6u5"]
 
 [ext_resource type="PackedScene" uid="uid://uv2akmqf3qjv" path="res://Locations/LocationTemplate.tscn" id="1_j4ags"]
-[ext_resource type="Texture2D" uid="uid://b05nbdack6ssb" path="res://KennySpaceEx/PNG/Items/star.png" id="2_8tsxg"]
 
 [node name="LocationTemplate" instance=ExtResource("1_j4ags")]
-
-[node name="Sprite2D" parent="." index="0"]
-texture = ExtResource("2_8tsxg")

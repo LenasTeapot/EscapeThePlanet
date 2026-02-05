@@ -1,9 +1,5 @@
-[gd_scene load_steps=3 format=3 uid="uid://dy5p3iukvkf0g"]
+[gd_scene load_steps=2 format=3 uid="uid://dy5p3iukvkf0g"]
 
 [ext_resource type="PackedScene" uid="uid://uv2akmqf3qjv" path="res://Locations/LocationTemplate.tscn" id="1_kljp2"]
-[ext_resource type="Texture2D" uid="uid://dn658qpb56oyk" path="res://KennySpaceEx/PNG/Items/flagRed1.png" id="2_33h53"]
 
 [node name="NodeLocation" instance=ExtResource("1_kljp2")]
-
-[node name="Sprite2D" parent="." index="0"]
-texture = ExtResource("2_33h53")

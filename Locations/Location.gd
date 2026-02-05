@@ -16,7 +16,7 @@ func _ready():
 	area.scale.x = (spriteTextSize.y/2)/10
 	area.scale.y = area.scale.x
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("DoAction") and active:
 		canBegin = true
 	if Input.is_action_pressed("DoAction") and canBegin:
@@ -32,10 +32,10 @@ func _action():
 	sprite.flip_h = !sprite.flip_h
 	print("Do action on this location.")
 
-func _on_area_2d_body_entered(body):
+func _on_area_2d_body_entered(_body):
 	active = true
 	
-func _on_area_2d_body_exited(body):
+func _on_area_2d_body_exited(_body):
 	_reset()
 	
 func _reset():

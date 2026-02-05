@@ -10,7 +10,7 @@ func _ready():
 	offsetX = position.x - player.position.x
 	offsetY = position.y - player.position.y
 
-func _process(delta):
+func _process(_delta):
 	position.x = player.position.x + offsetX
 	if useY:
 		position.y = player.position.y + offsetY

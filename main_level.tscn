@@ -1,11 +1,13 @@
-[gd_scene load_steps=18 format=3 uid="uid://c5hoiv7myxo4g"]
+[gd_scene load_steps=28 format=3 uid="uid://c5hoiv7myxo4g"]
 
 [ext_resource type="Script" uid="uid://ew3x43f41fkg" path="res://main.gd" id="1_kcon1"]
 [ext_resource type="PackedScene" uid="uid://c2a3vt8sndb5d" path="res://Character/PlayerCharacter.tscn" id="2_sja83"]
-[ext_resource type="Texture2D" uid="uid://b6fsfrtoxgxix" path="res://KennySpaceEx/PNG/Backgrounds/blue_land.png" id="3_gr30s"]
-[ext_resource type="Texture2D" uid="uid://cgj1h027r65sv" path="res://KennySpaceEx/PNG/Ground/Planet/planetMid.png" id="4_0b04w"]
+[ext_resource type="Material" uid="uid://duovcfp6irerh" path="res://Art/BitMaterial.tres" id="4_do8ha"]
 [ext_resource type="Script" uid="uid://cwx8pesmvd71s" path="res://FollowCamera.gd" id="5_1cmih"]
+[ext_resource type="Texture2D" uid="uid://cys5vfn6eftim" path="res://Art/Background_1bit_01.PNG" id="5_aonjr"]
+[ext_resource type="Shader" uid="uid://il70axjnjflj" path="res://BitShader.gdshader" id="5_do8ha"]
 [ext_resource type="Texture2D" uid="uid://kvccyl8mhi7m" path="res://UI/dotYellow.png" id="6_wlfpa"]
+[ext_resource type="Texture2D" uid="uid://d2blu1lniytxx" path="res://Art/ouds_1bit_01.PNG" id="7_htena"]
 [ext_resource type="Texture2D" uid="uid://b13omne4pple3" path="res://UI/dotBlue.png" id="7_lxawf"]
 [ext_resource type="PackedScene" uid="uid://clp0ehwu8j2c8" path="res://Sun.tscn" id="7_pklq5"]
 [ext_resource type="PackedScene" uid="uid://blt2h4n5322y5" path="res://world_spawner.tscn" id="9_46ioo"]
@@ -26,6 +28,37 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_htena"]
+shader = ExtResource("5_do8ha")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_do8ha"]
+atlas = ExtResource("5_aonjr")
+region = Rect2(0, 206.5, 390, 63.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htena"]
+atlas = ExtResource("5_aonjr")
+region = Rect2(0, 0, 390, 181.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xqiim"]
+atlas = ExtResource("7_htena")
+region = Rect2(0, 212.88889, 390, 57.111115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6pb3s"]
+atlas = ExtResource("7_htena")
+region = Rect2(0, 0, 189.15167, 95.47685)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e3ldi"]
+atlas = ExtResource("7_htena")
+region = Rect2(196.5752, 0, 193.4248, 139.33073)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ah7fh"]
+atlas = ExtResource("7_htena")
+region = Rect2(0, 94.45117, 102.09192, 47.24164)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x2wht"]
+atlas = ExtResource("7_htena")
+region = Rect2(95.00568, 91.30174, 86.60968, 45.666916)
+
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7laqb"]
 friction = 0.0
 
@@ -37,7 +70,7 @@ friction = 0.0
 script = ExtResource("1_kcon1")
 
 [node name="PlayerCharacter" parent="." groups=["Player"] instance=ExtResource("2_sja83")]
-position = Vector2(567, 535)
+position = Vector2(578, 535)
 
 [node name="Camera2D" type="Camera2D" parent="PlayerCharacter"]
 position = Vector2(0, -213)
@@ -49,89 +82,136 @@ offset_top = -322.0
 offset_right = -567.0
 offset_bottom = -322.0
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+[node name="SunBackground" type="ParallaxBackground" parent="."]
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.05, 0.05)
-motion_mirroring = Vector2(1228, 0)
+[node name="Path2D2" type="Path2D" parent="SunBackground"]
+position = Vector2(684, 250)
+curve = SubResource("Curve2D_oeaww")
 
-[node name="BlueLand" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-z_index = -1
-position = Vector2(567, 224)
-scale = Vector2(1.2, 1.2)
-texture = ExtResource("3_gr30s")
+[node name="PathFollow2D" type="PathFollow2D" parent="SunBackground/Path2D2"]
+position = Vector2(350, 200)
+rotation = -1.5707964
 
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2(1250, 0)
+[node name="YellowSun" parent="SunBackground/Path2D2/PathFollow2D" instance=ExtResource("7_pklq5")]
+texture = ExtResource("6_wlfpa")
 
-[node name="PlanetMid" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2(0, 600)
-texture = ExtResource("4_0b04w")
+[node name="Path2D3" type="Path2D" parent="SunBackground"]
+position = Vector2(429, 419)
+curve = SubResource("Curve2D_aonjr")
 
-[node name="PlanetMid2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2(125, 600)
-texture = ExtResource("4_0b04w")
+[node name="PathFollow2D" type="PathFollow2D" parent="SunBackground/Path2D3"]
+position = Vector2(250, 0)
+rotation = -1.815775
 
-[node name="PlanetMid3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2(250, 600)
-texture = ExtResource("4_0b04w")
-
-[node name="PlanetMid4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2(375, 600)
-texture = ExtResource("4_0b04w")
-
-[node name="PlanetMid5" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2(503, 600)
-texture = ExtResource("4_0b04w")
-
-[node name="PlanetMid6" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2(628, 600)
-texture = ExtResource("4_0b04w")
-
-[node name="PlanetMid7" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2(753, 600)
-texture = ExtResource("4_0b04w")
-
-[node name="PlanetMid8" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2(878, 600)
-texture = ExtResource("4_0b04w")
-
-[node name="PlanetMid9" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2(1006, 600)
-texture = ExtResource("4_0b04w")
-
-[node name="PlanetMid10" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2(1131, 600)
-texture = ExtResource("4_0b04w")
+[node name="BlueSun" parent="SunBackground/Path2D3/PathFollow2D" instance=ExtResource("7_pklq5")]
+rotation = 1.5707964
+time = 10
+texture = ExtResource("7_lxawf")
 
 [node name="FollowCameraX" type="Node2D" parent="."]
+visible = false
+z_index = -50
 position = Vector2(607, 178)
 script = ExtResource("5_1cmih")
 useY = true
 
-[node name="Path2D2" type="Path2D" parent="FollowCameraX"]
-position = Vector2(85, -35)
-curve = SubResource("Curve2D_oeaww")
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+layer = -1
 
-[node name="PathFollow2D" type="PathFollow2D" parent="FollowCameraX/Path2D2"]
-position = Vector2(350, 200)
-rotation = -1.5707964
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+material = SubResource("ShaderMaterial_htena")
+motion_mirroring = Vector2(1560, 0)
 
-[node name="YellowSun" parent="FollowCameraX/Path2D2/PathFollow2D" instance=ExtResource("7_pklq5")]
-texture = ExtResource("6_wlfpa")
+[node name="GroundPlane1" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture_filter = 1
+material = ExtResource("4_do8ha")
+position = Vector2(190, 591)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_do8ha")
 
-[node name="Path2D3" type="Path2D" parent="FollowCameraX"]
-position = Vector2(-207, 69)
-curve = SubResource("Curve2D_aonjr")
+[node name="GroundPlane2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture_filter = 1
+material = ExtResource("4_do8ha")
+position = Vector2(970, 590)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_do8ha")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="FollowCameraX/Path2D3"]
-position = Vector2(250, 0)
-rotation = -1.815775
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.075, 0.075)
+motion_mirroring = Vector2(780, 0)
 
-[node name="BlueSun" parent="FollowCameraX/Path2D3/PathFollow2D" instance=ExtResource("7_pklq5")]
-rotation = 1.5707964
-time = 10
-texture = ExtResource("7_lxawf")
+[node name="Mountains" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+z_index = -1
+texture_filter = 1
+material = ExtResource("4_do8ha")
+position = Vector2(340, 402)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_htena")
+
+[node name="Mountains2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+z_index = -1
+texture_filter = 1
+material = ExtResource("4_do8ha")
+position = Vector2(1120, 402)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_htena")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+z_index = -3
+material = SubResource("ShaderMaterial_htena")
+motion_scale = Vector2(0.025, 0.025)
+motion_mirroring = Vector2(780, 0)
+
+[node name="BG_Clouds" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+z_index = -2
+texture_filter = 1
+material = ExtResource("4_do8ha")
+position = Vector2(355, 461)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_xqiim")
+
+[node name="BG_Clouds2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+z_index = -2
+texture_filter = 1
+material = ExtResource("4_do8ha")
+position = Vector2(1135, 461)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_xqiim")
+
+[node name="Big Clouds" type="ParallaxLayer" parent="ParallaxBackground"]
+z_index = -3
+position = Vector2(1, 0)
+motion_scale = Vector2(0.05, 0.05)
+motion_mirroring = Vector2(1440, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Big Clouds"]
+material = ExtResource("4_do8ha")
+position = Vector2(297, 261)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_6pb3s")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/Big Clouds"]
+material = ExtResource("4_do8ha")
+position = Vector2(1029, 164)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_e3ldi")
+
+[node name="SmallClouds" type="ParallaxLayer" parent="ParallaxBackground"]
+z_index = -5
+motion_scale = Vector2(0.01, 0.01)
+motion_mirroring = Vector2(1440, 0)
+
+[node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/SmallClouds"]
+material = ExtResource("4_do8ha")
+position = Vector2(495, 115)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_ah7fh")
+
+[node name="Sprite2D4" type="Sprite2D" parent="ParallaxBackground/SmallClouds"]
+material = ExtResource("4_do8ha")
+position = Vector2(776, 355)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_x2wht")
 
 [node name="WorldSpawner" parent="." instance=ExtResource("9_46ioo")]
 position = Vector2(567, 536)
@@ -149,10 +229,10 @@ shape = SubResource("RectangleShape2D_m5ug1")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_hudh1")
-volume_db = 1.0
-autoplay = true
+volume_db = -5.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
 modulate = Color(0.47657922, 0.27395758, 0.5468543, 0.497)

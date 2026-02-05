@@ -13,6 +13,7 @@ config_version=5
 config/name="EscapeThePlanet"
 run/main_scene="uid://c5hoiv7myxo4g"
 config/features=PackedStringArray("4.5", "GL Compatibility")
+boot_splash/bg_color=Color(0.12941177, 0.003921569, 0.078431375, 1)
 config/icon="res://icon.svg"
 
 [autoload]
@@ -68,3 +69,19 @@ locale/translations_pot_files=PackedStringArray("res://Dialogue/Intro.dialogue")
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.12941177, 0.003921569, 0.078431375, 1)
+
+[shader_globals]
+
+Red={
+"type": "color",
+"value": Color(0.12941177, 0.003921569, 0.078431375, 1)
+}
+Blue={
+"type": "color",
+"value": Color(0.42996296, 0.15120837, 0.23987257, 1)
+}
+Green={
+"type": "color",
+"value": Color(0, 0, 0, 1)
+}
